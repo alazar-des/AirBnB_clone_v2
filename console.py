@@ -231,14 +231,12 @@ class HBNBCommand(cmd.Cmd):
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
-            print(HBNBCommand.classes[args])
-            for k, v in storage.all(HBNBCommand.classes[args]):
+            for k, v in storage.all(HBNBCommand.classes[args]).items():
                 if k.split('.')[0] == args:
                     print_list.append(str(v))
         else:
             for k, v in storage.all():
                 print_list.append(str(v))
-
         print(print_list)
 
     def help_all(self):
