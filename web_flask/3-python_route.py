@@ -32,10 +32,10 @@ def cisfun(ctext):
 @app.route('/python')
 @app.route('/python')
 @app.route('/python/<text>')
-def python(text='cool'):
+def python(text='is cool'):
     """Return url.
     """
-    return 'Python is %s' % text.replace("_", " ")
+    return 'Python %s' % text.replace("_", " ")
 
 
 if __name__ == "__main__":
