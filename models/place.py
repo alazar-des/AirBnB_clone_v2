@@ -15,6 +15,7 @@ if models.storage_t == 'db':
                                  ForeignKey('amenities.id'), primary_key=True)
                           )
 
+
 class Place(BaseModel, Base):
     """ A place to stay """
     if models.storage_t == 'db':
@@ -52,7 +53,7 @@ class Place(BaseModel, Base):
             """
             review_list = []
             all_review = models.storage.all(Review)
-            for review in all_reviews:
+            for key, review in all_reviews.items():
                 if review.place_id == self.id:
                     review_list.append(review)
             return review_list
@@ -64,7 +65,7 @@ class Place(BaseModel, Base):
             """
             amenities_list = []
             all_amenities = models.storage.all(Amenity)
-            for amenity in all_amenities:
+            for key, amenity in all_amenities.items():
                 if amenity.place_id == self.id:
                     amenities_list.append(amenity)
             return amenities_list
