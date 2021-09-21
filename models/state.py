@@ -17,14 +17,13 @@ class State(BaseModel, Base):
     else:
         name = ""
 
-    if models.storage_t != 'db':
         @property
         def cities(self):
             """getter for cityies with the same state with the current instance
             """
             city_list = []
             all_cities = models.storage.all(City)
-            for city in all_cities:
+            for key, city in all_cities.items():
                 if city.state_id == self.id:
                     city_list.append(city)
             return city_list
