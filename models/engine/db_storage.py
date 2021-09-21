@@ -70,3 +70,8 @@ class DBStorage():
         Session_fact = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(Session_fact)
         self.__session = Session
+
+    def close(self):
+        """deserializing the JSON file to objects
+        """
+        self.__session.remove()
